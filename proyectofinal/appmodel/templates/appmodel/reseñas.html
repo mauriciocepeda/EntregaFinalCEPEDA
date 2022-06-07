@@ -1,0 +1,42 @@
+{% extends 'appmodel/padre.html' %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="mb-5">RESEÑAS</h1>
+
+{% endblock %}
+
+{% block lista %}
+
+    <div class="card-body">
+    </div>
+
+{% for object in object_list reversed %}
+    <h1><img src="{{ object.tapa.url }}" height="150px"></h1>
+    <a class="btn btn-primary" href="{% url 'reseñadetalle' object.id %}">Leer {{ object }}</a>
+    {% if user.is_superuser %}
+    <a class="btn btn-primary" href="{% url 'reseñaeditar' object.id %}">Editar</a>
+    <a class="btn btn-primary" href="{% url 'reseñaborrar' object.id %}">Eliminar</a>
+    {% endif %}
+
+{% endfor %}
+
+{% if user.is_superuser %}
+
+<div class="text-center my-5">
+    <div class="card mb-4">
+        <a class="btn btn-danger"href="{% url 'reseñacrear' %}">Escribir una nueva reseña</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block navegador %}
+<li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'reseñas' %}">Reseñas</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'chats' %}">Chat</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'perfil' %}">Mi perfil</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'about_me' %}">Acerca de mi</a></li>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'appmodel/padre.html' %}
+
+{% load static %}
+
+{% block titulo %}
+{% if user.is_authenticated %}
+<h1 class="mb-5">INICIO</h1>
+<h1 class="mb-5">{{ mensaje }}</h1>
+<h1 class="mb-5">{{ error }}</h1>
+{% else %}
+<h2 class="mb-5">{{mensaje}}</h1>
+{% endif %}
+{% endblock %}
+
+{% block navegador %}
+{% if user.is_authenticated %}
+<li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'reseñas' %}">Reseñas</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'chats' %}">Chat</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'perfil' %}">Mi perfil</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'about_me' %}">Acerca de mi</a></li>
+{% endif %}
+{% endblock %}
+
+{% block lista %}
+{% if user.is_authenticated%}
+<div class="text-center my-5">
+    <div class="card mb-4">
+        <a class="btn btn-primary" href="{% url 'reseñas' %}">Reseñas</a>
+        <br>
+        <a class="btn btn-primary" href="{% url 'chats' %}">Chats</a>
+        <br>
+        <a class="btn btn-primary" href="{% url 'perfil' %}">Mi perfil</a>
+        <br>
+        <a class="btn btn-primary" href="{% url 'about_me' %}">Acerca de mi</a>
+
+    </div>
+</div>
+{% else %}
+<div class="text-center my-5">
+    <div class="card mb-4">
+        <a class="btn btn-primary" href="{% url 'login' %}">inicia sesion</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

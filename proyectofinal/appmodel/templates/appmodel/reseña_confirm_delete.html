@@ -1,0 +1,31 @@
+{% extends 'appmodel/padre.html' %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="mb-5">Eliminar Reseña</h1>
+
+{% endblock %}
+
+{% block lista %}
+
+<form method="post">{% csrf_token %}
+
+    estas seguro que desea eliminar {{ object }}?
+    <input class="btn btn-danger"type="submit" value="Eliminar">
+    
+    <a class="btn btn-primary"href="{% url 'reseñas' %}"> Regresar</a>
+
+
+</form>
+
+{% endblock %}
+
+{% block navegador %}
+<li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'reseñas' %}">Reseñas</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'chats' %}">Chat</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'perfil' %}">Mi perfil</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'about_me' %}">Acerca de mi</a></li>
+{% endblock %}

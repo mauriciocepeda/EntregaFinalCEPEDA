@@ -1,0 +1,32 @@
+{% extends 'appmodel/padre.html' %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="mb-5"> {{ object }}</h1>
+
+{% endblock %}
+
+{% block lista %}
+
+<h3><i>{{reseña.fecha}}</i></h3>
+
+<h1><i>{{reseña.titulo}}</i></h1>
+
+<img src='{{ reseña.tapa.url }}' height="500px">
+
+<p><i>{{reseña.cuerpo}}</i></p>
+<p>
+    <a class="btn btn-danger" href="{% url 'reseñas' %}"> Regresar</a>
+</p>
+
+{% endblock %}
+
+{% block navegador %}
+<li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'reseñas' %}">Reseñas</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'chats' %}">Chat</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'perfil' %}">Mi perfil</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'about_me' %}">Acerca de mi</a></li>
+{% endblock %}
